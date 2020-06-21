@@ -3,15 +3,15 @@ const config = require('config');
 const express = require('express');
 const app = express();
 
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 
-console.log(config.get('name'));
-console.log(config.get('env'));
+//console.log(config.get('name'));
+//console.log(config.get('env'));
 
-startUpDebugger("Debugger");     // set environment variable -> DEBUG=app:startup to see this
+//startUpDebugger("Debugger");     // set environment variable -> DEBUG=app:startup to see this
 
 app.use(express.json());
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.use(function(req, resp, next){
     console.log('Middleware 001');
@@ -24,7 +24,8 @@ app.use(function(req, resp, next){
 });
 
 app.get('/', (req, resp) => {
-    resp.render('index', { title: 'My Express App', message: 'Hello There\nYou are awesome!!!'});
+    resp.send('Hello World');
+    //resp.render('index', { title: 'My Express App', message: 'Hello There\nYou are awesome!!!'});
 });
 
 const port = process.env.PORT || 1995;

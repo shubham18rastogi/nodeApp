@@ -29,17 +29,19 @@ app.get('/api/query', (req, resp) => {
 });
 
 app.post('/api/courses', (req, resp) => {
-    // if(!req.body.name || req.body.name.length < 3){
-    //     resp.status(400).send('Illegal argument');
-    //     return;
-    // }
-    const schema = {
+    /*if(!req.body.name || req.body.name.length < 3){
+        resp.status(400).send('Illegal argument');
+        return;
+    }*/
+    /*const schema = {
         name: Joi.string().min(3).required()
     };
     const result = Joi.validate(req.body, schema);
     //console.log(result);
+    */
+    const result = validateName(req.body);
     if(result.error) return resp.status(400).send(result.error);
-
+    
     const course = {
         id: courses.length + 1,
         name: req.body.name
